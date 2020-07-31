@@ -1,4 +1,4 @@
-# fyp
+# Flutter Application
 
 A new Flutter project.
 
