@@ -1,4 +1,4 @@
-# FYP_Django_Engine
+# Generic-Fuzzy-Engine
 Some used commands had been discussed already but here I mentioned all the commands those were used in the system. Before the description of the command, let me clear one thing that these commands should be run in your main project file folder and environment variables must be applied.
  Here I consider that your system has visual studio code and python 3.8 version while you can check your python via a command   python --version
 After the surety of python, you have to install environment variable wrapper using the command:
