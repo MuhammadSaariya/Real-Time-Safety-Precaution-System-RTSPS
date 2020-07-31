@@ -86,11 +86,7 @@ You are ready to go.
 * Improve streaming resolution quality
 * Decrease streaming latency 
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/xpcrts/Steaming-IP-Camera-Nodejs/tags). 
-
 ## Authors
 
-**Muhammad Saariya ** - [xpcrts](https://github.com/xpcrts)
+**Muhammad Saariya ** - [MuhammadSaariya](https://github.com/MuhammadSaariya)
 
