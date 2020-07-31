@@ -1,0 +1,257 @@
+{%extends 'base.html' %} {% block content%}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <script src="{% static 'jquery-3.3.1.min.js' %}"></script>
+    <script
+      type="text/javascript"
+      src="https://canvasjs.com/assets/script/canvasjs.min.js"
+    ></script>
+    <title>Fuzzy Engine</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="display-3 text-center">
+        Fuzzification and Defuzzification
+      </div>
+    </div>
+    {{data}}
+
+    <div class="row">
+      <div></div>
+      <div class="card col-sm-2 mx-auto">
+        <p class="diplay-1 mx-5">
+          Select the relivent ranges in integer and Don't use any kind of
+          symbols like ( - , ; / ) etc
+        </p>
+        <a class="btn btn-primary m-3" href="/addSensor">About us</a>
+
+        <form action="" method="get">
+          <table class="table table-hover">
+            <tbody>
+              {% for dat in file %}
+              <tr>
+                <td>
+                  <div class="mx-5">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="exampleCheck{{dat.id}}"
+                      name="{{dat.id}}"
+                      onClick="myFunction('exampleCheck{{dat.id}}','mintext{{dat.id}}','maxtext{{dat.id}}')"
+                    />
+                    <label class="form-check-label" for="exampleCheck{{dat.id}}"
+                      >{{dat.sen}}</label
+                    >
+                  </div>
+                  <p id="maxtext{{dat.id}}" style="display: none;">
+                    Enter Max Range
+                    <input
+                      id="maxRange{{dat.id}}"
+                      type="text"
+                      name="maxRange{{dat.id}}"
+                    />
+                  </p>
+                  <p id="mintext{{dat.id}}" style="display: none;">
+                    Enter Min Range
+                    <input
+                      id="minRange{{dat.id}}"
+                      type="text"
+                      name="minRange{{dat.id}}"
+                    />
+                  </p>
+                </td>
+              </tr>
+              {%endfor%}
+            </tbody>
+          </table>
+          Enter Port number
+          <input type="text" name="port" />
+          <input
+            class="btn btn-danger mx-2"
+            id="btn_show"
+            type="submit"
+            value="Show"
+          />
+        </form>
+      </div>
+
+      <div class="col-sm-9">
+        <div class="card">
+          <div
+            class="card"
+            id="alert"
+            style="background-color: rgb(18, 70, 5);"
+          >
+            <center>
+              <h3 style="color: White;">
+                Normal condition
+              </h3>
+            </center>
+          </div>
+          <div
+            class="card"
+            id="alert1"
+            style="background-color: rgb(255, 175, 1);"
+          >
+            <center>
+              <h3 style="color: White;">
+                Sitution is getting worse plz Do something
+              </h3>
+            </center>
+          </div>
+          <div
+            class="card"
+            id="alert2"
+            style="background-color: rgb(126, 5, 5);"
+          >
+            <center>
+              <h3 style="color: White;">
+                Very Hazard situation, Take some Action
+              </h3>
+            </center>
+          </div>
+          <div class="display-5 text-center">Charts</div>
+
+          <div id="chartContainer" style="height: 600px; width: 100%;">
+            <script>
+              $("#btn_show").click(function () {
+                console.log("Suna rana sab");
+              });
+              window.onload = function () {
+                var dps = []; // dataPoints
+                var chart = new CanvasJS.Chart("chartContainer", {
+                  animationEnabled: true,
+                  zoomEnabled: true,
+                  title: {
+                    title: "defuzzy value:",
+                  },
+                  axisX: {
+                    title: "time",
+                  },
+                  axisY: {
+                    title: "defuzz",
+                    lineColor: "#51CDA0",
+                  },
+                  data: [
+                    {
+                      type: "area",
+                      dataPoints: dps,
+                      xValueType: "dateTime",
+                      xValueFormatString: "DD MMM HH:mm:ss",
+                      yValueFormatString: '#,##0.##"mm"',
+                    },
+                  ],
+                });
+
+                var xVal = 0;
+                var yVal = 100;
+                var zo = "normal";
+                var updateInterval = 1000;
+
+                var dataLength = 3600; // number of dataPoints visible at any point
+
+                var updateChart = function () {
+                  $.ajax({
+                    method: "GET",
+                    url: "/data/",
+
+                    success: function (data) {
+                      for (var j = 0; j < data.result.length; j++) {
+                        var str_array = data.result[j].split(",");
+                        dps.push({
+                          x: Date.parse(str_array[1]),
+                          y: Number(str_array[0]),
+                          zo: String(str_array[2]),
+                        });
+                        myalert(0);
+                        if (str_array[2] == "Normal situation") {
+                          myalert(1);
+                        }
+                        if (str_array[2] == "Not Normal situation") {
+                          myalert(2);
+                        }
+                        if (str_array[2] == "Extreme bad") {
+                          myalert(3);
+                        }
+
+                        return data;
+                      }
+                    },
+                    error: function (data) {
+                      console.log("Error!");
+                    },
+                  });
+
+                  if (dps.length > dataLength) {
+                    dps.shift();
+                  }
+
+                  chart.render();
+                };
+
+                updateChart(dataLength);
+                setInterval(function () {
+                  updateChart();
+                }, updateInterval);
+              };
+
+              function myFunction(id, min, max) {
+                var checkBox1 = document.getElementById(id);
+                var text = document.getElementById(min);
+                var text1 = document.getElementById(max);
+                if (checkBox1.checked == true) {
+                  text.style.display = "block";
+                  text1.style.display = "block";
+                } else {
+                  text.style.display = "none";
+                  text1.style.display = "none";
+                }
+              }
+              function myalert(id) {
+                var lab1 = document.getElementById("alert");
+                var lab2 = document.getElementById("alert1");
+                var lab3 = document.getElementById("alert2");
+                if (id == 1) {
+                  lab1.style.display = "block";
+                } else {
+                  if (id == 2) {
+                    lab2.style.display = "block";
+                  } else {
+                    if (id == 3) {
+                      lab3.style.display = "block";
+                    } else {
+                      lab1.style.display = "none";
+                      lab2.style.display = "none";
+                      lab3.style.display = "none";
+                    }
+                  }
+                }
+              }
+            </script>
+          </div>
+          {{data1}}
+          <div class="mx-3">Current Defuzzy Value</div>
+          {{name}}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+{%endblock%}

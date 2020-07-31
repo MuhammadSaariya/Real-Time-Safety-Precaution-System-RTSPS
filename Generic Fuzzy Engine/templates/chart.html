@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- {% for dat in name %}
+        
+        
+      
+      {%endfor%} -->
+      {{a}}
+      <canvas id="mychart"></canvas>
+      {{name}}
+      <script>
+        let mychart = document.getElementById("mychart").getContext("2d");
+        let masschart = new Chart(mychart, {
+          type: "line",
+          data: {
+            labels: [
+              "Boston",
+              "worcester",
+              "Springfield",
+              "Lowel",
+              "Cambrige",
+              "New Bedford",
+            ],
+            datasets: [
+              {
+                label: "Population",
+                data: [
+                  43232,
+                  43233,
+                  13223,
+                  32342,
+                  234,
+                  23,
+                  3234,
+                  3223,
+                  23422,
+                  32422,
+                  31332,
+                ],
+                backgroundColor: [
+                  "rgba(255, 99, 132, 0.2)",
+                  "rgba(54, 162, 235, 0.2)",
+                  "rgba(255, 206, 86, 0.2)",
+                  "rgba(75, 192, 192, 0.2)",
+                  "rgba(153, 102, 255, 0.2)",
+                  "rgba(255, 159, 64, 0.2)",
+                ],
+                borderColor: [
+                  "rgba(255, 99, 132, 1)",
+                  "rgba(54, 162, 235, 1)",
+                  "rgba(255, 206, 86, 1)",
+                  "rgba(75, 192, 192, 1)",
+                  "rgba(153, 102, 255, 1)",
+                  "rgba(255, 159, 64, 1)",
+                ],
+                borderWidth: 1,
+              },
+            ],
+          },
+          option: {
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true,
+                  },
+                },
+              ],
+            },
+            animation: {
+              onProgress: function (animation) {
+                progress.value =
+                  animation.animationObject.currentStep /
+                  animation.animationObject.numSteps;
+              },
+            },
+          },
+        });
+      </script>
+    </div>
+  </body>
+</html>

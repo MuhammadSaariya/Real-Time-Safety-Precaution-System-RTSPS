@@ -1,0 +1,28 @@
+{%extends 'base.html' %} {% block content%}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="display-4 mb-5 text-center">Add the Sensor if you want</div>
+      {{data}}For the purpose to change the requirement Contect 03228076129
+      <form action="">
+        <!-- {% csrf_token %} -->
+        <div class="Lead">Enter Sensor Name</div>
+        <input type="text" name="Naam" />
+        <div class="Lead">Enter min Range</div>
+        <input type="text" name="minRange" />
+        <div class="Lead">Enter max Range</div>
+        <input type="text" name="maxRange" />
+        <input class="btn btn-danger mx-2" type="submit" value="Show" />
+      </form>
+    </div>
+  </body>
+</html>
+
+{%endblock%}

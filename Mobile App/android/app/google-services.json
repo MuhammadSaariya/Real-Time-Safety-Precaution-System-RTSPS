@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1084353127888",
+    "firebase_url": "https://rtsps2020.firebaseio.com",
+    "project_id": "rtsps2020",
+    "storage_bucket": "rtsps2020.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1084353127888:android:bbf2b2208ae93a9d9885d5",
+        "android_client_info": {
+          "package_name": "com.example.fyp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1084353127888-fov04lsjkj6aqvij5mmgv3j5hq6up8la.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxEiTESxGbQzPJ_r52SIQRITppzksyfko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1084353127888-fov04lsjkj6aqvij5mmgv3j5hq6up8la.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

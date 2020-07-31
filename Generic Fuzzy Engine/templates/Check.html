@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chart.js ♥ Django</title>
+  </head>
+  <body>
+    <div style="margin-top: 30px; margin-bottom: 30px;">
+      <div style="display: flex; justify-content: center; align-items: center;">
+        <canvas id="genderChart" width="1000"></canvas>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script>
+      $.ajax({
+        method: "GET",
+        url: "/data/",
+        success: function (data) {
+          console.log(data);
+          new Chart(document.getElementById("genderChart"), {
+            type: "line",
+            data: {
+              labels: data.label_data,
+              datasets: [
+                {
+                  label: "female viewership %",
+                  backgroundColor: "rgba(255, 10, 77, 0.5)",
+                  borderColor: "rgba(255, 10, 77, 1)",
+                  pointBackgroundColor: "rgba(255, 10, 77, 1)",
+                  data: data.female_data,
+                },
+              ],
+            },
+            options: {
+              legend: {
+                labels: {
+                  fontSize: 18,
+                },
+              },
+              title: {
+                display: true,
+                text: "Gender Wise Youtube Viewership",
+                fontSize: 22.0,
+              },
+              scales: {
+                yAxes: [
+                  {
+                    ticks: {
+                      beginAtZero: true,
+                      fontSize: 15.0,
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: "Percentage",
+                      fontSize: 20.0,
+                    },
+                  },
+                ],
+                xAxes: [
+                  {
+                    ticks: {
+                      fontSize: 15.0,
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: "Age Groups",
+                      fontSize: 20.0,
+                    },
+                  },
+                ],
+              },
+              responsive: false,
+            },
+          });
+        },
+        error: function (data) {
+          console.log("Error!");
+        },
+      });
+    </script>
+  </body>
+</html>

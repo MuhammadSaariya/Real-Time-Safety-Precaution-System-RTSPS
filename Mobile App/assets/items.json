@@ -1,0 +1,61 @@
+[{
+    "Labels" : "1pm",
+     "data" : 22
+        
+ },
+ {
+     "Labels" : "2pm",
+      "data" : 21
+         
+  },
+  {
+     "Labels" : "3pm",
+      "data" : 19
+         
+  },
+  {
+     "Labels" : "4pm",
+      "data" : 18
+         
+  },
+  {
+     "Labels" : "5pm",
+      "data" : 17.5
+         
+  },
+  {
+     "Labels" : "6pm",
+      "data" : 21.8
+         
+  },
+  {
+     "Labels" : "7pm",
+      "data" : 10
+         
+  },
+  {
+     "Labels" : "8pm",
+      "data" : 15
+         
+  },
+  {
+     "Labels" : "9pm",
+      "data" : 16
+         
+  },
+  {
+     "Labels" : "10pm",
+      "data" : 20
+         
+  },
+  {
+     "Labels" : "11pm",
+      "data" : 3
+         
+  },
+  {
+     "Labels" : "12pm",
+      "data" : 1
+         
+  }
+]

@@ -1,0 +1,15 @@
+button {
+    left: 940px;
+}
+
+
+a {
+   
+    padding-left :10px;
+}
+
+.example-fill-remaining-space {
+
+    flex: 1 1 auto;
+}
+

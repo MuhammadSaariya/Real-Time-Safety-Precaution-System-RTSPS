@@ -1,0 +1,23 @@
+
+.grid-container
+{
+    margin: 20px;
+    background-color: whitesmoke;
+    
+   
+}
+.dashboard-card {  
+    position:absolute;  
+    top: 20px;  
+    left: 20px;  
+    right: 20px; 
+    padding: 0px;
+    border: solid;
+  
+  } 
+  .chart-wrapper
+  { 
+    background-color:white;
+    border: solid;
+    
+  }

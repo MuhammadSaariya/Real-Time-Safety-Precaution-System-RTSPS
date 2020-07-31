@@ -1,0 +1,16 @@
+{
+  "sensor": [
+    {
+      "id": "1",
+      "sen": "temparature_Sensor"
+    },
+    {
+      "id": "2",
+      "sen": "Gas Sensor"
+    },
+    {
+      "id": "3",
+      "sen": "Flame Sensor"
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{%extends 'base.html' %} {% block content%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- XDSoft DateTimePicker -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css"
+      integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y="
+      crossorigin="anonymous1"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"
+      integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk="
+      crossorigin="anonymous2"
+    ></script>
+  </head>
+  <body>
+    <div>
+      <div class="my-5 mx-auto">
+        <div class="display-5 font-weight-bold">
+          Choose the date and time of watching data
+          <form action="">
+            <input
+              id="datetimepicker"
+              name="datetimepicker"
+              action="date1"
+              type="text"
+            />
+            <input type="submit" name="submit" value="Date" />
+          </form>
+        </div>
+
+        <script>
+          $(function () {
+            $("#datetimepicker").datetimepicker({
+              format: "d/m/Y H:i",
+            });
+          });
+        </script>
+        <div class="card shadow">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">DateTime</th>
+                <th scope="col">Temparature sensor</th>
+                <th scope="col">Gas Sensor(CO)</th>
+                <th scope="col">Flame Sensor</th>
+                <th scope="col">Defuzzification</th>
+                <th scope="col">Fuzzification</th>
+              </tr>
+            </thead>
+          </table>
+          <table class="row table table-hover">
+            <tbody class="mx-1">
+              {% for dat in date %}
+              <tr>
+                <td>{{dat}}</td>
+              </tr>
+
+              {%endfor%}
+            </tbody>
+
+            <tbody class="mx-auto">
+              {% for t in tem %}
+              <tr>
+                <td>{{t}}</td>
+              </tr>
+
+              {%endfor%}
+            </tbody>
+            <tbody class="mx-auto">
+              {% for g in gas %}
+              <tr>
+                <td>{{g}}</td>
+              </tr>
+
+              {%endfor%}
+            </tbody>
+            <tbody class="mx-auto">
+              {% for f in flame %}
+              <tr>
+                <td>{{f}}</td>
+              </tr>
+
+              {%endfor%}
+              <tbody class="mx-auto">
+                {% for Df in Defuzzy %}
+                <tr>
+                  <td>{{Df}}</td>
+                </tr>
+  
+                {%endfor%}
+              </tbody>
+              <tbody class="mx-auto">
+                {% for fuzz in Fuzzy %}
+                <tr>
+                  <td>{{fuzz}}</td>
+                </tr>
+  
+                {%endfor%}
+              </tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+{%endblock%}
